@@ -1,7 +1,9 @@
 from arquivos import *
 from random import randint
 from math import sqrt
+from time import process_time
 
+start = process_time()
 a = readtable("data2.dat")
 nClusters = 6
 
@@ -36,6 +38,7 @@ for step in range(0, 1000):
         near = newnear
         ponto[2] = i
 
+print(process_time() - start)
 xC = []
 yC = []
 for c in posCentroides:

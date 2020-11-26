@@ -1,14 +1,13 @@
 from pylab import *
 from random import *
-from re import *
-
+from re import match
 
 def readtable(name):
     f = open(name, 'r')
     lines = f.readlines()
     result = []
     for line in lines:
-        if(line.startswith('#') or (re.match("[0-9]+ [a-zA-Z]", line)) or (re.match("[a-zA-Z]", line))):
+        if(line.startswith('#') or (match("[0-9]+ [a-zA-Z]", line)) or (match("[a-zA-Z]", line))):
             continue
         result.append(line)
     f.close()
