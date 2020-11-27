@@ -55,7 +55,7 @@ for step in range(0, 1000):
     centroids[i][0] /= members[i]
     centroids[i][1] /= members[i]
 
-  #reallocate the individual points from it's previous centroid to the closest one
+  #reallocate the individual points from their previous centroid to the closest one
   for point in a:
     near = dist(point, centroids[point[2]])
     for i, c in enumerate(centroids):
