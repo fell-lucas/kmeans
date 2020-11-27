@@ -1,10 +1,18 @@
-from arquivos import *
 from random import randint
 from math import sqrt
 from time import process_time
+from pylab import plot, show
 
 start = process_time()
-a = readtable("data/dataset.txt")
+f = open("data/dataset.txt", "r")
+lines = f.readlines()
+f.close()
+
+a = []
+for line in lines:
+  data = [float (i) for i in line.split(" ")]
+  a.append(data)
+
 k = 6
 
 membros = []
@@ -19,7 +27,7 @@ def dist(p1, p2):
 
 for i in a:
   i.append(randint(0, k - 1))
-  membros[i[2]] = membros[i[2]] + 1
+  membros[i[2]] += 1
 
 for step in range(0, 1000):
   for i, x in enumerate(a):
@@ -65,6 +73,9 @@ for i, c in enumerate(centroids):
   f2.write(str(c[0]) + " " + str(c[1]) + "\n\n\n")
 f2.close()
 
-plot(column(a, 0), column(a, 1), 'g+')
-plot(xC, yC, 'ro')
+xData = [x[0] for x in a]
+yData = [x[1] for x in a]
+
+plot(xData, yData, 'm+')
+plot(xC, yC, 'yo')
 show()
